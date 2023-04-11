@@ -8,17 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/calculator")
 public class CalcController {
-    private final ru.calcmax.calculator1.CalcService calcService;
+    private final CalcService calcService;
 
-    public CalcController(ru.calcmax.calculator1.CalcService calcService) {
+    public CalcController(CalcService calcService) {
         this.calcService = calcService;
     }
-
-    @GetMapping(path = "")
+    @GetMapping
     public String hello() {
         return calcService.hello();
     }
-
     @GetMapping(path = "/plus")
     public String plus(@RequestParam int num1, @RequestParam int num2) {
         return num1 + " + " + num2 + " = " + calcService.plus(num1, num2);
